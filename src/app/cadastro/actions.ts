@@ -1,6 +1,7 @@
 'use server'
 
 import { createClient } from '@/utils/supabase/server'
+import { sendWelcomeEmails } from '@/utils/mailgun'
 
 export async function signUp(formData: FormData) {
   const supabase = await createClient()
@@ -51,6 +52,9 @@ export async function signUp(formData: FormData) {
     if (insertError) {
       return { error: 'Cadastro autenticado, mas o vínculo de parceiro falhou. Contate o administrador. Detalhes: ' + insertError.message }
     }
+
+    // Envia os e-mails de boas-vindas após garantia de sucesso no cadastro
+    await sendWelcomeEmails(nome, email, telefone);
   }
 
   return { success: true }

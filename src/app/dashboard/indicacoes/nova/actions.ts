@@ -2,6 +2,7 @@
 
 import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
+import { sendIndicacaoEmails } from '@/utils/mailgun'
 
 export async function createIndicacao(formData: FormData) {
   const supabase = await createClient()
@@ -28,7 +29,7 @@ export async function createIndicacao(formData: FormData) {
   // Get Parceiro ID based on user email to link it properly
   const { data: parceiro, error: parceiroError } = await supabase
     .from('parceiros')
-    .select('uid, email')
+    .select('uid, email, nome')
     .eq('email', user.email)
     .single()
 
@@ -61,6 +62,22 @@ export async function createIndicacao(formData: FormData) {
       return { error: 'Este CNPJ já foi indicado anteriormente.' }
     }
     return { error: 'Falha ao gravar indicação. Detalhes: ' + error.message }
+  }
+
+  // Enviar email de notificação
+  try {
+    console.log('Iniciando envio de email para parceiro e admin...', { parceiroEmail: parceiro.email, empresa });
+    const emailResult = await sendIndicacaoEmails(
+      parceiro.nome || 'Parceiro',
+      parceiro.email,
+      empresa,
+      nomeContato,
+      telefone,
+      email || 'Não informado'
+    )
+    console.log('Resultado do envio de emails:', emailResult);
+  } catch (err) {
+    console.error('Erro crítico ao disparar a função de email de indicação:', err)
   }
 
   return { success: true }
