@@ -1,4 +1,4 @@
-name: Deploy to VPS
+name: Deploy para VPS Hostinger
 
 on:
   push:
@@ -10,15 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout do código
+        uses: actions/checkout@v3
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.VPS_HOST }}
-          username: ${{ secrets.VPS_USER }}
-          key: ${{ secrets.VPS_SSH_KEY }}
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}   # ← senha, não chave
+          port: ${{ secrets.SSH_PORT }}
           script: |
             cd /var/www/parceiroscatedral
-            git pull origin main
-            npm install --production=false
-            npm run build
+            git fetch origin main
+            git reset --hard origin/main
+            git clean -fd
+            npm install --production
             pm2 restart parceiroscatedral
