@@ -37,7 +37,7 @@ export default async function IndicacoesPage(props: { searchParams?: Promise<{ e
     .from('indicacoes')
     .select('*')
     .eq('uidParceiro', parceiro.uid)
-    .order('dataIndicacao', { ascending: false })
+    .order('empresa', { ascending: true })
 
   let parceirosOptions: any[] = []
   if (isAdmin) {
@@ -48,7 +48,7 @@ export default async function IndicacoesPage(props: { searchParams?: Promise<{ e
     <div className="flex-1 w-full flex flex-col items-start gap-6 pt-6 bg-slate-50 min-h-screen">
       <div className="w-full px-8 flex flex-row items-center justify-between">
         <h1 className="text-2xl font-semibold text-slate-800">Listar Indicações</h1>
-        <Link 
+        <Link
           href="/dashboard/indicacoes/nova"
           className="flex items-center gap-2 bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-lg font-medium transition-colors shadow-sm"
         >
@@ -58,8 +58,8 @@ export default async function IndicacoesPage(props: { searchParams?: Promise<{ e
       </div>
 
       <div className="w-full px-8 pb-12">
-        <IndicationsTable 
-          data={indicacoes || []} 
+        <IndicationsTable
+          data={indicacoes || []}
           isAdmin={isAdmin}
           parceirosOptions={parceirosOptions}
           selectedEmail={selectedEmail}

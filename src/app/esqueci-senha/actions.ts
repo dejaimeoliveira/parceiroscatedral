@@ -15,7 +15,7 @@ export async function resetPassword(formData: FormData) {
   // Since we don't have a verified top-level domain on this env, we rely on NEXT_PUBLIC_SUPABASE_URL origin redirect configurations
   // The redirect URL should be whitelisted in Supabase Dashboard (Authentication -> URL Configuration)
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/nova-senha`,
+    redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/auth/callback?next=/nova-senha`,
   })
 
   if (error) {

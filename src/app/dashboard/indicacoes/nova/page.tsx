@@ -1,11 +1,12 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ChevronLeft } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { toast } from 'sonner'
 import { createIndicacao } from './actions'
+import { createClient } from '@/utils/supabase/client'
 
 // Masks
 const applyCnpjMask = (value: string) => {
@@ -34,13 +35,46 @@ export default function NovaIndicacaoPage() {
   const [email, setEmail] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
   const [isPending, setIsPending] = useState(false)
+  const [userEmail, setUserEmail] = useState('')
   const router = useRouter()
 
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data }) => {
+      setUserEmail(data.user?.email || '')
+    })
+  }, [])
+
+  const validateCnpj = (cnpj: string): boolean => {
+    const numbers = cnpj.replace(/\D/g, '')
+    if (numbers.length !== 14) return false
+    if (/^(\d)\1+$/.test(numbers)) return false
+
+    const calc = (nums: string, len: number) => {
+      let sum = 0
+      let pos = len - 7
+      for (let i = len; i >= 1; i--) {
+        sum += parseInt(nums[len - i]) * pos--
+        if (pos < 2) pos = 9
+      }
+      const result = sum % 11 < 2 ? 0 : 11 - (sum % 11)
+      return result === parseInt(nums[len])
+    }
+
+    return calc(numbers, 12) && calc(numbers, 13)
+  }
+
   const handleAction = async (formData: FormData) => {
+    const BYPASS_EMAIL = 'dejaimeoliveira@uol.com.br'
+    if (userEmail !== BYPASS_EMAIL && !validateCnpj(cnpj)) {
+      setErrorMsg('CNPJ inválido. Verifique o número informado.')
+      return
+    }
+
     setIsPending(true)
     setErrorMsg('')
     const result = await createIndicacao(formData)
-    
+
     if (result?.error) {
       setErrorMsg(result.error)
       setIsPending(false)
@@ -57,10 +91,10 @@ export default function NovaIndicacaoPage() {
 
   return (
     <div className="w-full max-w-2xl mx-auto min-h-screen bg-slate-50 pb-20">
-      
-      {/* Top Banner similar to user's screenshot */}
+
+      {/* Top Banner */}
       <div className="bg-amber-500 h-16 flex items-center justify-center relative shadow-sm">
-        <Link 
+        <Link
           href="/dashboard"
           className="absolute left-4 text-amber-900 hover:text-amber-950 transition-colors"
         >
@@ -74,7 +108,7 @@ export default function NovaIndicacaoPage() {
       {/* Form Container */}
       <div className="p-6 mt-4">
         <form action={handleAction} className="space-y-6 flex flex-col">
-          
+
           {/* Nome Contato */}
           <div className="flex flex-col relative pb-6 border-b border-amber-500">
             <label className="text-sm text-gray-600 mb-1 pl-2">Nome da pessoa indicada</label>
@@ -156,7 +190,7 @@ export default function NovaIndicacaoPage() {
               {email.length}/60
             </span>
           </div>
-          
+
           {errorMsg && (
             <div className="bg-red-50 text-red-600 p-3 rounded-md text-sm text-center">
               {errorMsg}
