@@ -7,7 +7,7 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
   return (
     <div className="flex-1 flex flex-col w-full px-8 sm:max-w-md justify-center gap-2 min-h-screen mx-auto">
       <form className="animate-in flex-1 flex flex-col w-full justify-center gap-2 text-foreground">
-        
+
         <h1 className="text-3xl font-bold text-center mb-8">ParceirosCatedral</h1>
 
         <label className="text-md font-medium" htmlFor="email">
@@ -18,6 +18,9 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
           name="email"
           placeholder="voce@exemplo.com"
           required
+          autoCapitalize="none"
+          autoCorrect="off"
+          onChange={(e) => (e.target.value = e.target.value.toLowerCase())}
         />
         <label className="text-md font-medium" htmlFor="password">
           Senha
@@ -36,16 +39,16 @@ export default async function LoginPage(props: { searchParams: Promise<{ message
           >
             Entrar
           </button>
-          
+
           <div className="flex justify-between text-sm mt-2">
-            <Link 
-              href="/esqueci-senha" 
+            <Link
+              href="/esqueci-senha"
               className="text-amber-700 hover:text-amber-800 hover:underline transition-colors"
             >
               Esqueci minha senha
             </Link>
-            <Link 
-              href="/cadastro" 
+            <Link
+              href="/cadastro"
               className="text-amber-700 hover:text-amber-800 font-medium hover:underline transition-colors"
             >
               Criar uma conta
