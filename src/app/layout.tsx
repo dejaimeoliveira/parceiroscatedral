@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "ParceirosCatedral",
+  title: "Parceiros Catedral",
   description: "Portal Administrativo de Parceiros da Catedral",
 };
 
