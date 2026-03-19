@@ -19,6 +19,7 @@ export async function createIndicacao(formData: FormData) {
   const nomeContato = formData.get('nomeContato') as string
   const empresa = formData.get('empresa') as string
   const email = formData.get('email') as string
+  const observacao = formData.get('observacao') as string | null
   
   const rawCnpj = formData.get('cnpj') as string
   const cnpj = rawCnpj.replace(/\D/g, '')
@@ -50,6 +51,7 @@ export async function createIndicacao(formData: FormData) {
       cnpj,
       telefone,
       email,
+      observacao,
       emailParceiro: parceiro.email,
       uidParceiro: parceiro.uid,
       dataIndicacao: indicacaoDate.toISOString(),

@@ -33,6 +33,7 @@ export default function NovaIndicacaoPage() {
   const [cnpj, setCnpj] = useState('')
   const [telefone, setTelefone] = useState('')
   const [email, setEmail] = useState('')
+  const [observacao, setObservacao] = useState('')
   const [errorMsg, setErrorMsg] = useState('')
   const [isPending, setIsPending] = useState(false)
   const [userEmail, setUserEmail] = useState('')
@@ -64,7 +65,9 @@ export default function NovaIndicacaoPage() {
     return calc(numbers, 12) && calc(numbers, 13)
   }
 
-  const handleAction = async (formData: FormData) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    
     const BYPASS_EMAIL = 'dejaimeoliveira@uol.com.br'
     if (userEmail !== BYPASS_EMAIL && !validateCnpj(cnpj)) {
       setErrorMsg('CNPJ inválido. Verifique o número informado.')
@@ -73,6 +76,8 @@ export default function NovaIndicacaoPage() {
 
     setIsPending(true)
     setErrorMsg('')
+    
+    const formData = new FormData(e.currentTarget)
     const result = await createIndicacao(formData)
 
     if (result?.error) {
@@ -107,7 +112,7 @@ export default function NovaIndicacaoPage() {
 
       {/* Form Container */}
       <div className="p-6 mt-4">
-        <form action={handleAction} className="space-y-6 flex flex-col">
+        <form onSubmit={handleSubmit} className="space-y-6 flex flex-col">
 
           {/* Nome Contato */}
           <div className="flex flex-col relative pb-6 border-b border-amber-500">
@@ -188,6 +193,23 @@ export default function NovaIndicacaoPage() {
             />
             <span className="absolute bottom-1 right-2 text-xs text-gray-400">
               {email.length}/60
+            </span>
+          </div>
+
+          {/* Observacao */}
+          <div className="flex flex-col relative pb-6 border-b border-gray-200 focus-within:border-amber-500 transition-colors">
+            <label className="text-sm text-gray-600 mb-1 pl-2">Observação</label>
+            <textarea
+              name="observacao"
+              value={observacao}
+              onChange={(e) => setObservacao(e.target.value.substring(0, 500))}
+              placeholder="Alguma informação adicional sobre a empresa ou o contato?"
+              className="bg-transparent border-none outline-none text-gray-800 text-base px-2 w-full focus:ring-0 resize-none"
+              rows={4}
+              maxLength={500}
+            />
+            <span className="absolute bottom-1 right-2 text-xs text-gray-400">
+              {observacao.length}/500
             </span>
           </div>
 
