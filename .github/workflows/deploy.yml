@@ -25,5 +25,6 @@ jobs:
             git fetch origin main
             git reset --hard origin/main
             git clean -fd
-            npm install --production
+            npm install
+            npm run build
             pm2 restart parceiroscatedral
