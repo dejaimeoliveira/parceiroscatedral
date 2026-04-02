@@ -41,9 +41,11 @@ export default function LoginForm({ message }: { message?: string }) {
                         <Link href="/esqueci-senha" className="text-amber-700 hover:text-amber-800 hover:underline transition-colors">
                             Esqueci minha senha
                         </Link>
+                        {/* Ocultado temporariamente a pedido do usuário
                         <Link href="/cadastro" className="text-amber-700 hover:text-amber-800 font-medium hover:underline transition-colors">
                             Criar uma conta
                         </Link>
+                        */}
                     </div>
                 </div>
 
