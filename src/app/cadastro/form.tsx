@@ -6,7 +6,7 @@ import { signUp } from './actions'
 
 type Funcao = {
   id: number
-  funcaoNome: string
+  funcao_nome: string
 }
 
 export function CadastroForm({ funcoes, defaultFuncaoId }: { funcoes: Funcao[], defaultFuncaoId: string }) {
@@ -128,7 +128,7 @@ export function CadastroForm({ funcoes, defaultFuncaoId }: { funcoes: Funcao[], 
           className="w-full border border-slate-300 rounded-lg py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
         >
           {funcoes.map(f => (
-            <option key={f.id} value={f.id}>{f.funcaoNome}</option>
+            <option key={f.id} value={f.id}>{f.funcao_nome}</option>
           ))}
         </select>
       </div>

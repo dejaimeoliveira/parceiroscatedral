@@ -7,12 +7,12 @@ export default async function CadastroPage() {
   // Fetch roles id > 1 limit (excluding Admin)
   const { data: funcoes } = await supabase
     .from('funcoes')
-    .select('id, funcaoNome')
+    .select('id, funcao_nome')
     .gt('id', 1)
-    .order('funcaoNome', { ascending: true })
+    .order('funcao_nome', { ascending: true })
 
   // Find the 'Contador' role to be suggested as default if it exists
-  const contadorRole = funcoes?.find(f => f.funcaoNome.toLowerCase() === 'contador')
+  const contadorRole = funcoes?.find(f => f.funcao_nome.toLowerCase() === 'contador')
   const defaultFuncaoId = contadorRole ? contadorRole.id : funcoes?.[0]?.id || ''
 
   return (

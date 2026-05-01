@@ -7,7 +7,7 @@ import { ParceiroRow, updateParceiro } from '../actions'
 
 type FuncaoRow = {
   id: number;
-  funcaoNome: string;
+  funcao_nome: string;
 }
 
 function formatCPF(cpf: string): string {
@@ -158,7 +158,7 @@ export function ParceirosClient({
             <tbody className="divide-y divide-slate-200">
               {filteredData.length > 0 ? (
                 filteredData.map((parceiro) => {
-                  const funcaoName = funcoes.find(f => f.id === parceiro.idFuncao)?.funcaoNome || '-'
+                  const funcaoName = funcoes.find(f => f.id === parceiro.idFuncao)?.funcao_nome || '-'
                   return (
                     <tr key={parceiro.id} className="hover:bg-amber-50/30 transition-colors">
                       <td className="px-6 py-4 font-medium text-slate-800">
@@ -281,7 +281,7 @@ export function ParceirosClient({
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
                 >
                   {funcoes.map(f => (
-                    <option key={f.id} value={f.id}>{f.funcaoNome}</option>
+                    <option key={f.id} value={f.id}>{f.funcao_nome}</option>
                   ))}
                 </select>
               </div>
