@@ -13,13 +13,13 @@ import { updateIndicacao } from '../actions'
 export type Indicacao = {
   id: number;
   empresa: string;
-  nomeContato: string;
+  nome_contato: string;
   cnpj: string;
   telefone: string;
   email: string;
   observacao?: string;
-  dataIndicacao: string;
-  data_limite?: string; // or dataLimite depending on the exact schema, using strings for serialization
+  data_indicacao: string;
+  data_limite?: string; // or data_limite depending on the exact schema, using strings for serialization
 }
 
 type ParceiroOption = {
@@ -47,12 +47,12 @@ function formatTelefone(telefone: string): string {
   return telefone;
 }
 
-export function IndicationsTable({ 
+export function IndicationsTable({
   data: initialData,
   isAdmin,
   parceirosOptions = [],
   selectedEmail
-}: { 
+}: {
   data: Indicacao[];
   isAdmin?: boolean;
   parceirosOptions?: ParceiroOption[];
@@ -81,12 +81,12 @@ export function IndicationsTable({
   // Client-side filtering implementation for case-insensitive search
   const filteredData = data.filter((item) => {
     if (!searchTerm) return true
-    
+
     const searchLower = searchTerm.toLowerCase()
-    
+
     return (
       item.empresa?.toLowerCase().includes(searchLower) ||
-      item.nomeContato?.toLowerCase().includes(searchLower) ||
+      item.nome_contato?.toLowerCase().includes(searchLower) ||
       item.cnpj?.includes(searchLower) ||
       item.email?.toLowerCase().includes(searchLower)
     )
@@ -101,7 +101,7 @@ export function IndicationsTable({
     setIsEditing(indicacao)
     setFormData({
       empresa: indicacao.empresa || '',
-      nomeContato: indicacao.nomeContato || '',
+      nome_contato: indicacao.nome_contato || '',
       cnpj: formatCNPJ(indicacao.cnpj || ''),
       telefone: formatTelefone(indicacao.telefone || ''),
       email: indicacao.email || '',
@@ -112,13 +112,13 @@ export function IndicationsTable({
   const handleMaskedChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'cnpj' | 'telefone') => {
     const { value } = e.target;
     let formatted = value;
-    
+
     if (type === 'cnpj') {
       formatted = formatCNPJ(value);
     } else {
       formatted = formatTelefone(value);
     }
-    
+
     setFormData({ ...formData, [type]: formatted });
   }
 
@@ -129,7 +129,7 @@ export function IndicationsTable({
     try {
       await updateIndicacao(isEditing.id, {
         empresa: formData.empresa || '',
-        nomeContato: formData.nomeContato || '',
+        nome_contato: formData.nome_contato || '',
         cnpj: formData.cnpj || '',
         telefone: formData.telefone || '',
         email: formData.email || '',
@@ -137,17 +137,17 @@ export function IndicationsTable({
       })
 
       // Update local state to reflect changes without a full refetch
-      setData(data.map(i => 
-        i.id === isEditing.id 
-          ? { 
-              ...i, 
-              empresa: formData.empresa || '',
-              nomeContato: formData.nomeContato || '',
-              cnpj: formData.cnpj?.replace(/\D/g, '') || '',
-              telefone: formData.telefone?.replace(/\D/g, '') || '',
-              email: formData.email || '',
-              observacao: formData.observacao || ''
-            } 
+      setData(data.map(i =>
+        i.id === isEditing.id
+          ? {
+            ...i,
+            empresa: formData.empresa || '',
+            nome_contato: formData.nome_contato || '',
+            cnpj: formData.cnpj?.replace(/\D/g, '') || '',
+            telefone: formData.telefone?.replace(/\D/g, '') || '',
+            email: formData.email || '',
+            observacao: formData.observacao || ''
+          }
           : i
       ))
 
@@ -216,15 +216,15 @@ export function IndicationsTable({
                         {ind.empresa}
                         {ind.email && <div className="text-xs text-slate-400 font-normal mt-0.5">{ind.email}</div>}
                       </td>
-                      <td className="px-6 py-4">{ind.nomeContato}</td>
+                      <td className="px-6 py-4">{ind.nome_contato}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{formatCNPJ(ind.cnpj)}</td>
                       <td className="px-6 py-4 whitespace-nowrap">{formatTelefone(ind.telefone)}</td>
                       <td className="px-6 py-4 whitespace-nowrap text-slate-500">
-                        {ind.dataIndicacao ? format(parseISO(ind.dataIndicacao), "dd 'de' MMMM, yyyy", { locale: ptBR }) : '-'}
+                        {ind.data_indicacao ? format(parseISO(ind.data_indicacao), "dd 'de' MMMM, yyyy", { locale: ptBR }) : '-'}
                       </td>
                       {isAdmin && (
                         <td className="px-6 py-4 text-right">
-                          <button 
+                          <button
                             onClick={() => handleEditClick(ind)}
                             className="text-amber-500 hover:text-amber-700 p-2 hover:bg-amber-50 rounded-lg transition-colors inline-block"
                           >
@@ -253,14 +253,14 @@ export function IndicationsTable({
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
             <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
               <h2 className="text-lg font-semibold text-slate-800">Editar Indicação: {isEditing.empresa}</h2>
-              <button 
+              <button
                 onClick={() => setIsEditing(null)}
                 className="text-slate-400 hover:text-slate-700 p-2 hover:bg-slate-200 rounded-full transition-colors"
               >
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="p-6 overflow-y-auto w-full grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2 col-span-2 md:col-span-1">
                 <label className="text-sm font-medium text-slate-700">Empresa</label>
@@ -277,8 +277,8 @@ export function IndicationsTable({
                 <label className="text-sm font-medium text-slate-700">Contato</label>
                 <input
                   type="text"
-                  value={formData.nomeContato || ''}
-                  onChange={(e) => setFormData({ ...formData, nomeContato: e.target.value })}
+                  value={formData.nome_contato || ''}
+                  onChange={(e) => setFormData({ ...formData, nome_contato: e.target.value })}
                   maxLength={60}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all placeholder:text-slate-400"
                 />

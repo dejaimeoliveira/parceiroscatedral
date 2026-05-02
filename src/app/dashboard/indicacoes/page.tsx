@@ -36,7 +36,7 @@ export default async function IndicacoesPage(props: { searchParams?: Promise<{ e
   const { data: indicacoes } = await supabase
     .from('indicacoes')
     .select('*')
-    .eq('uidParceiro', parceiro.uid)
+    .eq('uid_parceiro', parceiro.uid)
     .order('empresa', { ascending: true })
 
   let parceirosOptions: any[] = []

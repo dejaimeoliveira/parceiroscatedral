@@ -16,12 +16,12 @@ export function IndicacaoForm({ token, parceiroNome }: { token: string, parceiro
   async function handleSubmit(formData: FormData) {
     setLoading(true)
     setError(null)
-    
+
     // Anexa o token ao FormData
     formData.append('token', token)
 
     const result = await submitIndicacaoPublica(formData)
-    
+
     if (result.error) {
       setError(result.error)
       setLoading(false)
@@ -53,7 +53,7 @@ export function IndicacaoForm({ token, parceiroNome }: { token: string, parceiro
           {error}
         </div>
       )}
-      
+
       <div className="bg-blue-50 border border-blue-200 text-blue-800 p-4 rounded-lg mb-6 text-sm">
         Você está sendo indicado por <strong>{parceiroNome}</strong>.
       </div>
@@ -91,12 +91,12 @@ export function IndicacaoForm({ token, parceiroNome }: { token: string, parceiro
         </div>
 
         <div className="space-y-2">
-          <label htmlFor="nomeContato" className="block text-sm font-medium text-gray-700">
+          <label htmlFor="nome_contato" className="block text-sm font-medium text-gray-700">
             Nome do Contato *
           </label>
           <input
-            id="nomeContato"
-            name="nomeContato"
+            id="nome_contato"
+            name="nome_contato"
             type="text"
             required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-amber-500 focus:border-amber-500"

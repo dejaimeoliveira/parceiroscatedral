@@ -1,24 +1,24 @@
-'use server'
+"use server";
 
-import { createClient } from '@/utils/supabase/server'
-import { sendWelcomeEmails } from '@/utils/mailgun'
+import { createClient } from "@/utils/supabase/server";
+import { sendWelcomeEmails } from "@/utils/mailgun";
 
 export async function signUp(formData: FormData) {
-  const supabase = await createClient()
+  const supabase = await createClient();
 
-  const email = formData.get('email') as string
-  const password = formData.get('password') as string
-  const nome = formData.get('nome') as string
-  const telefone = formData.get('telefone') as string
-  const idFuncaoRaw = formData.get('idFuncao') as string
+  const email = formData.get("email") as string;
+  const password = formData.get("password") as string;
+  const nome = formData.get("nome") as string;
+  const telefone = formData.get("telefone") as string;
+  const id_funcaoRaw = formData.get("id_funcao") as string;
 
   // Handle phone mask stripping
-  const telefoneLimpo = telefone ? telefone.replace(/\D/g, '') : ''
-  const idFuncao = parseInt(idFuncaoRaw, 10)
+  const telefoneLimpo = telefone ? telefone.replace(/\D/g, "") : "";
+  const id_funcao = parseInt(id_funcaoRaw, 10);
 
   // 1. Validate data
   if (!email || !password || !nome) {
-    return { error: 'Preencha todos os campos obrigatórios.' }
+    return { error: "Preencha todos os campos obrigatórios." };
   }
 
   // 2. Perform Supabase Sign Up
@@ -29,33 +29,41 @@ export async function signUp(formData: FormData) {
     options: {
       data: {
         full_name: nome, // metadata for the auth engine
-      }
-    }
-  })
+      },
+    },
+  });
 
   if (authError) {
-    return { error: 'Ocorreu um erro no servidor de autenticação. Detalhes: ' + authError.message }
+    return {
+      error:
+        "Ocorreu um erro no servidor de autenticação. Detalhes: " +
+        authError.message,
+    };
   }
 
   // 3. Create Partner record in DB
   if (authData.user) {
-    const { error: insertError } = await supabase.from('parceiros').insert({
+    const { error: insertError } = await supabase.from("parceiros").insert({
       uid: authData.user.id,
       nome,
       email,
       telefone: telefoneLimpo,
-      idFuncao: isNaN(idFuncao) ? null : idFuncao,
+      id_funcao: isNaN(id_funcao) ? null : id_funcao,
       ativo: true, // or false depending on whether you want them inactive until email confirmation
       // If the email is unique but auth fails, it will hit an error here, but Supabase Auth takes precedence
-    })
+    });
 
     if (insertError) {
-      return { error: 'Cadastro autenticado, mas o vínculo de parceiro falhou. Contate o administrador. Detalhes: ' + insertError.message }
+      return {
+        error:
+          "Cadastro autenticado, mas o vínculo de parceiro falhou. Contate o administrador. Detalhes: " +
+          insertError.message,
+      };
     }
 
     // Envia os e-mails de boas-vindas após garantia de sucesso no cadastro
     await sendWelcomeEmails(nome, email, telefone);
   }
 
-  return { success: true }
+  return { success: true };
 }

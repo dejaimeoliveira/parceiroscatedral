@@ -9,13 +9,13 @@
 ## Banco de dados
 
 - Cliente Supabase configurado em `@/lib/supabaseClient`
-- Colunas usam camelCase entre aspas duplas (ex: "emailParceiro", "dataIndicacao")
+- Colunas usam camelCase entre aspas duplas (ex: "email_parceiro", "data_indicacao")
 - Saldo do parceiro calculado pela view `extratolancamentos`
 
 ## Tabelas principais
 
-- `parceiros` — uid, email, emailVendedor, token_indicacao
-- `indicacoes` — cnpj (único), uidParceiro, emailParceiro, origem ('parceiro' | 'link')
-- `lancamentos` — tipo ('Crédito' | 'Débito'), qtd, emailParceiro
+- `parceiros` — uid, email, email_vendedor, token_indicacao
+- `indicacoes` — cnpj (único), uid_parceiro, email_parceiro, origem ('parceiro' | 'link')
+- `lancamentos` — tipo ('Crédito' | 'Débito'), qtd, email_parceiro
 - `mensalidadesrecebidas` — nu_cgc, vr_areceber, dt_recebimento, parceiro_id
 - `extratolancamentos` — view com saldo acumulado por parceiro

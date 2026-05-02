@@ -14,8 +14,8 @@ export function CadastroForm({ funcoes, defaultFuncaoId }: { funcoes: Funcao[], 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [telefone, setTelefone] = useState('')
-  const [idFuncao, setIdFuncao] = useState(defaultFuncaoId)
-  
+  const [id_funcao, setid_funcao] = useState(defaultFuncaoId)
+
   const [errorMsg, setErrorMsg] = useState('')
   const [isPending, setIsPending] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -31,12 +31,12 @@ export function CadastroForm({ funcoes, defaultFuncaoId }: { funcoes: Funcao[], 
   const handleSubmit = async (formData: FormData) => {
     setIsPending(true)
     setErrorMsg('')
-    
-    // Explicitly append idFuncao if disabled or not picked up natively
-    formData.set('idFuncao', idFuncao)
+
+    // Explicitly append id_funcao if disabled or not picked up natively
+    formData.set('id_funcao', id_funcao)
 
     const result = await signUp(formData)
-    
+
     if (result?.error) {
       setErrorMsg(result.error)
       setIsPending(false)
@@ -56,7 +56,7 @@ export function CadastroForm({ funcoes, defaultFuncaoId }: { funcoes: Funcao[], 
         <p className="text-slate-500 mb-6">
           Um link de confirmação foi enviado para <strong>{email}</strong>. Por favor, verifique sua caixa de entrada e spam para validar seu cadastro.
         </p>
-        <Link 
+        <Link
           href="/login"
           className="bg-slate-800 hover:bg-slate-900 text-white font-medium py-3 px-6 rounded-lg shadow transition-colors inline-block"
         >
@@ -123,8 +123,8 @@ export function CadastroForm({ funcoes, defaultFuncaoId }: { funcoes: Funcao[], 
       <div className="space-y-1">
         <label className="text-sm font-medium text-slate-700">Qual sua área de atuação?</label>
         <select
-          value={idFuncao}
-          onChange={(e) => setIdFuncao(e.target.value)}
+          value={id_funcao}
+          onChange={(e) => setid_funcao(e.target.value)}
           className="w-full border border-slate-300 rounded-lg py-2.5 px-3 focus:outline-none focus:ring-2 focus:ring-amber-500 bg-white"
         >
           {funcoes.map(f => (

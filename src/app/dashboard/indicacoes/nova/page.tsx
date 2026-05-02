@@ -67,7 +67,7 @@ export default function NovaIndicacaoPage() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    
+
     const BYPASS_EMAIL = 'dejaimeoliveira@uol.com.br'
     if (userEmail !== BYPASS_EMAIL && !validateCnpj(cnpj)) {
       setErrorMsg('CNPJ inválido. Verifique o número informado.')
@@ -76,7 +76,7 @@ export default function NovaIndicacaoPage() {
 
     setIsPending(true)
     setErrorMsg('')
-    
+
     const formData = new FormData(e.currentTarget)
     const result = await createIndicacao(formData)
 
@@ -119,7 +119,7 @@ export default function NovaIndicacaoPage() {
             <label className="text-sm text-gray-600 mb-1 pl-2">Nome da pessoa indicada</label>
             <input
               type="text"
-              name="nomeContato"
+              name="nome_contato"
               value={nome}
               onChange={(e) => setNome(e.target.value.substring(0, 60))}
               required

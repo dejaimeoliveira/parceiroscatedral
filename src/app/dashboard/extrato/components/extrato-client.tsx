@@ -12,12 +12,12 @@ type ParceiroOption = {
   email: string;
 }
 
-export function ExtratoClient({ 
+export function ExtratoClient({
   data,
   isAdmin,
   parceirosOptions = [],
   selectedEmail
-}: { 
+}: {
   data: LancamentoComSaldo[];
   isAdmin?: boolean;
   parceirosOptions?: ParceiroOption[];
@@ -25,7 +25,7 @@ export function ExtratoClient({
 }) {
   const router = useRouter()
   const pathname = usePathname()
-  
+
   const handleParceiroChange = (email: string) => {
     if (!email) {
       router.push(pathname)
@@ -69,12 +69,12 @@ export function ExtratoClient({
               {data.length > 0 ? (
                 data.map((lanc, index) => {
                   const isCredito = lanc.tipo?.toLowerCase().startsWith('c') || lanc.tipo?.toLowerCase() === 'crédito';
-                  
+
                   return (
                     <tr key={lanc.id || index} className="transition-colors">
                       <td className="px-6 py-4 whitespace-nowrap">
-                        {lanc.dataLancamento 
-                          ? (new Date(lanc.dataLancamento)).toLocaleDateString('pt-BR')
+                        {lanc.data_lancamento
+                          ? (new Date(lanc.data_lancamento)).toLocaleDateString('pt-BR')
                           : 'null'}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">

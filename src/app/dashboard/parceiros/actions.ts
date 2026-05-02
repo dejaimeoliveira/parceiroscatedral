@@ -1,7 +1,7 @@
-'use server'
+"use server";
 
-import { createClient } from '@/utils/supabase/server'
-import { checkRole } from '@/utils/supabase/check-role'
+import { createClient } from "@/utils/supabase/server";
+import { checkRole } from "@/utils/supabase/check-role";
 
 export type ParceiroRow = {
   id: number;
@@ -10,67 +10,76 @@ export type ParceiroRow = {
   email: string;
   telefone: string;
   cpf: string;
-  idFuncao: number;
+  id_funcao: number;
   ativo: boolean;
-  emailVendedor: string;
-  pixConta: string;
-}
+  email_vendedor: string;
+  pix_conta: string;
+};
 
 export async function getParceiros() {
-  const isAdmin = await checkRole(1)
+  const isAdmin = await checkRole(1);
   if (!isAdmin) {
-    throw new Error('Acesso negado. Apenas administradores podem listar os parceiros.')
+    throw new Error(
+      "Acesso negado. Apenas administradores podem listar os parceiros.",
+    );
   }
 
-  const supabase = await createClient()
+  const supabase = await createClient();
 
   const { data, error } = await supabase
-    .from('parceiros')
-    .select('id, uid, nome, email, telefone, cpf, idFuncao, ativo, emailVendedor, pixConta')
-    .order('nome', { ascending: true })
+    .from("parceiros")
+    .select(
+      "id, uid, nome, email, telefone, cpf, id_funcao, ativo, email_vendedor, pix_conta",
+    )
+    .order("nome", { ascending: true });
 
   if (error) {
-    throw new Error('Erro ao buscar parceiros: ' + error.message)
+    throw new Error("Erro ao buscar parceiros: " + error.message);
   }
 
-  return data as ParceiroRow[]
+  return data as ParceiroRow[];
 }
 
-export async function updateParceiro(id: number, updates: Partial<ParceiroRow>) {
-  const isAdmin = await checkRole(1)
+export async function updateParceiro(
+  id: number,
+  updates: Partial<ParceiroRow>,
+) {
+  const isAdmin = await checkRole(1);
   if (!isAdmin) {
-    throw new Error('Acesso negado. Apenas administradores podem atualizar parceiros.')
+    throw new Error(
+      "Acesso negado. Apenas administradores podem atualizar parceiros.",
+    );
   }
 
-  const supabase = await createClient()
+  const supabase = await createClient();
 
   // Limpando máscaras de telefone e cpf caso venham
-  const cleanedUpdates = { ...updates }
-  
+  const cleanedUpdates = { ...updates };
+
   if (cleanedUpdates.telefone) {
-    cleanedUpdates.telefone = cleanedUpdates.telefone.replace(/\D/g, '')
+    cleanedUpdates.telefone = cleanedUpdates.telefone.replace(/\D/g, "");
   }
   if (cleanedUpdates.cpf) {
-    cleanedUpdates.cpf = cleanedUpdates.cpf.replace(/\D/g, '')
+    cleanedUpdates.cpf = cleanedUpdates.cpf.replace(/\D/g, "");
   }
 
   const { data, error } = await supabase
-    .from('parceiros')
+    .from("parceiros")
     .update({
       telefone: cleanedUpdates.telefone,
       cpf: cleanedUpdates.cpf,
-      idFuncao: cleanedUpdates.idFuncao,
+      id_funcao: cleanedUpdates.id_funcao,
       ativo: cleanedUpdates.ativo,
-      emailVendedor: cleanedUpdates.emailVendedor,
-      pixConta: cleanedUpdates.pixConta
+      email_vendedor: cleanedUpdates.email_vendedor,
+      pix_conta: cleanedUpdates.pix_conta,
     })
-    .eq('id', id)
+    .eq("id", id)
     .select()
-    .single()
+    .single();
 
   if (error) {
-    throw new Error('Erro ao atualizar parceiro: ' + error.message)
+    throw new Error("Erro ao atualizar parceiro: " + error.message);
   }
 
-  return data
+  return data;
 }

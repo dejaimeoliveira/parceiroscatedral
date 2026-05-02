@@ -30,10 +30,10 @@ function formatTelefone(telefone: string): string {
   return telefone;
 }
 
-export function ParceirosClient({ 
-  initialData, 
-  funcoes 
-}: { 
+export function ParceirosClient({
+  initialData,
+  funcoes
+}: {
   initialData: ParceiroRow[]
   funcoes: FuncaoRow[]
 }) {
@@ -45,9 +45,9 @@ export function ParceirosClient({
 
   const filteredData = data.filter((item) => {
     if (!searchTerm) return true
-    
+
     const searchLower = searchTerm.toLowerCase()
-    
+
     return (
       (item.nome && item.nome.toLowerCase().includes(searchLower)) ||
       (item.email && item.email.toLowerCase().includes(searchLower)) ||
@@ -61,23 +61,23 @@ export function ParceirosClient({
     setFormData({
       telefone: formatTelefone(parceiro.telefone || ''),
       cpf: formatCPF(parceiro.cpf || ''),
-      idFuncao: parceiro.idFuncao || 1,
+      id_funcao: parceiro.id_funcao || 1,
       ativo: parceiro.ativo ?? false, // fallbacks to false if undefined
-      emailVendedor: parceiro.emailVendedor || '',
-      pixConta: parceiro.pixConta || ''
+      email_vendedor: parceiro.email_vendedor || '',
+      pix_conta: parceiro.pix_conta || ''
     })
   }
 
   const handleMaskedChange = (e: React.ChangeEvent<HTMLInputElement>, type: 'cpf' | 'telefone') => {
     const { value } = e.target;
     let formatted = value;
-    
+
     if (type === 'cpf') {
       formatted = formatCPF(value);
     } else {
       formatted = formatTelefone(value);
     }
-    
+
     setFormData({ ...formData, [type]: formatted });
   }
 
@@ -90,24 +90,24 @@ export function ParceirosClient({
       await updateParceiro(isEditing.id, {
         telefone: formData.telefone,
         cpf: formData.cpf,
-        idFuncao: Number(formData.idFuncao),
+        id_funcao: Number(formData.id_funcao),
         ativo: formData.ativo,
-        emailVendedor: formData.emailVendedor,
-        pixConta: formData.pixConta
+        email_vendedor: formData.email_vendedor,
+        pix_conta: formData.pix_conta
       })
 
       // Update local state to reflect changes without a full refetch
-      setData(data.map(p => 
-        p.id === isEditing.id 
-          ? { 
-              ...p, 
-              telefone: formData.telefone?.replace(/\D/g, '') || '',
-              cpf: formData.cpf?.replace(/\D/g, '') || '',
-              idFuncao: Number(formData.idFuncao),
-              ativo: formData.ativo ?? false,
-              emailVendedor: formData.emailVendedor || '',
-              pixConta: formData.pixConta || ''
-            } 
+      setData(data.map(p =>
+        p.id === isEditing.id
+          ? {
+            ...p,
+            telefone: formData.telefone?.replace(/\D/g, '') || '',
+            cpf: formData.cpf?.replace(/\D/g, '') || '',
+            id_funcao: Number(formData.id_funcao),
+            ativo: formData.ativo ?? false,
+            email_vendedor: formData.email_vendedor || '',
+            pix_conta: formData.pix_conta || ''
+          }
           : p
       ))
 
@@ -158,7 +158,7 @@ export function ParceirosClient({
             <tbody className="divide-y divide-slate-200">
               {filteredData.length > 0 ? (
                 filteredData.map((parceiro) => {
-                  const funcaoName = funcoes.find(f => f.id === parceiro.idFuncao)?.funcao_nome || '-'
+                  const funcaoName = funcoes.find(f => f.id === parceiro.id_funcao)?.funcao_nome || '-'
                   return (
                     <tr key={parceiro.id} className="hover:bg-amber-50/30 transition-colors">
                       <td className="px-6 py-4 font-medium text-slate-800">
@@ -173,14 +173,13 @@ export function ParceirosClient({
                         </span>
                       </td>
                       <td className="px-6 py-4">
-                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${
-                          parceiro.ativo ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
-                        }`}>
+                        <span className={`inline-flex items-center px-2 py-1 rounded-full text-xs font-medium ${parceiro.ativo ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+                          }`}>
                           {parceiro.ativo ? 'Ativo' : 'Inativo'}
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <button 
+                        <button
                           onClick={() => handleEditClick(parceiro)}
                           className="text-amber-500 hover:text-amber-700 p-2 hover:bg-amber-50 rounded-lg transition-colors inline-block"
                         >
@@ -208,14 +207,14 @@ export function ParceirosClient({
           <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-hidden flex flex-col animate-in fade-in zoom-in-95 duration-200">
             <div className="px-6 py-4 border-b border-slate-100 flex items-center justify-between bg-slate-50">
               <h2 className="text-lg font-semibold text-slate-800">Editar Parceiro: {isEditing.nome}</h2>
-              <button 
+              <button
                 onClick={() => setIsEditing(null)}
                 className="text-slate-400 hover:text-slate-700 p-2 hover:bg-slate-200 rounded-full transition-colors"
               >
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="p-6 overflow-y-auto w-full grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2 col-span-2">
                 <label className="text-sm font-medium text-slate-700">Email Login</label>
@@ -255,8 +254,8 @@ export function ParceirosClient({
                 <label className="text-sm font-medium text-slate-700">E-mail Vendedor (Referência)</label>
                 <input
                   type="email"
-                  value={formData.emailVendedor || ''}
-                  onChange={(e) => setFormData({ ...formData, emailVendedor: e.target.value })}
+                  value={formData.email_vendedor || ''}
+                  onChange={(e) => setFormData({ ...formData, email_vendedor: e.target.value })}
                   placeholder="vendedor@email.com"
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all placeholder:text-slate-400"
                 />
@@ -266,8 +265,8 @@ export function ParceirosClient({
                 <label className="text-sm font-medium text-slate-700">Chave PIX (Conta Repasse)</label>
                 <input
                   type="text"
-                  value={formData.pixConta || ''}
-                  onChange={(e) => setFormData({ ...formData, pixConta: e.target.value })}
+                  value={formData.pix_conta || ''}
+                  onChange={(e) => setFormData({ ...formData, pix_conta: e.target.value })}
                   placeholder="chave pix do parceiro"
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all placeholder:text-slate-400"
                 />
@@ -276,8 +275,8 @@ export function ParceirosClient({
               <div className="space-y-2 col-span-2 md:col-span-1 border-t border-slate-100 pt-4 mt-2">
                 <label className="text-sm font-medium text-slate-700">Função</label>
                 <select
-                  value={formData.idFuncao}
-                  onChange={(e) => setFormData({ ...formData, idFuncao: Number(e.target.value) })}
+                  value={formData.id_funcao}
+                  onChange={(e) => setFormData({ ...formData, id_funcao: Number(e.target.value) })}
                   className="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm bg-white focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition-all"
                 >
                   {funcoes.map(f => (
@@ -290,8 +289,8 @@ export function ParceirosClient({
                 <label className="text-sm font-medium text-slate-700">Status de Acesso</label>
                 <div className="flex items-center gap-3 pt-2">
                   <label className="relative inline-flex items-center cursor-pointer">
-                    <input 
-                      type="checkbox" 
+                    <input
+                      type="checkbox"
                       className="sr-only peer"
                       checked={formData.ativo || false}
                       onChange={(e) => setFormData({ ...formData, ativo: e.target.checked })}

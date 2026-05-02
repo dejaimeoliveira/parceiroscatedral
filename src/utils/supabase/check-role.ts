@@ -1,24 +1,31 @@
-import { createClient } from '@/utils/supabase/server'
-import { redirect } from 'next/navigation'
+import { createClient } from "@/utils/supabase/server";
+import { redirect } from "next/navigation";
 
 export async function checkRole(roleId: number) {
-  const supabase = await createClient()
+  const supabase = await createClient();
 
   const {
     data: { user },
-  } = await supabase.auth.getUser()
+  } = await supabase.auth.getUser();
 
   if (!user) {
-    redirect('/login')
+    redirect("/login");
   }
 
   const { data: parceiro, error } = await supabase
-    .from('parceiros')
-    .select('idFuncao')
-    .eq('uid', user.id)
-    .single()
+    .from("parceiros")
+    .select("id_funcao")
+    .eq("uid", user.id)
+    .single();
 
-  console.log('Role check for:', user.email, 'idFuncao:', parceiro?.idFuncao, 'Comparing to roleId:', roleId)
+  console.log(
+    "Role check for:",
+    user.email,
+    "id_funcao:",
+    parceiro?.id_funcao,
+    "Comparing to roleId:",
+    roleId,
+  );
 
-  return Number(parceiro?.idFuncao) === roleId
+  return Number(parceiro?.id_funcao) === roleId;
 }
