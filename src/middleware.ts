@@ -18,6 +18,5 @@ export const config = {
      * - nova-senha (new password page)
      * Feel free to modify this pattern to include more paths.
      */
-    '/((?!_next/static|_next/image|favicon.ico|login|cadastro|esqueci-senha|nova-senha|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
+  '/((?!_next/static|_next/image|favicon.ico|login|cadastro|esqueci-senha|nova-senha|indicar-empresa|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',],
 }

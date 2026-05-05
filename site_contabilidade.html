@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Escritório Comercial Mercúrio – Contabilidade Empresarial</title>
+<meta name="description" content="Contabilidade empresarial para empresas que buscam segurança fiscal, organização financeira e crescimento sustentável.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0D1F3C;
+    --navy-mid: #152D52;
+    --navy-light: #1E3D6E;
+    --gold: #C9A84C;
+    --gold-light: #E4C97A;
+    --gold-pale: #FBF4E3;
+    --cream: #FAF7F2;
+    --white: #FFFFFF;
+    --gray-100: #F5F4F0;
+    --gray-200: #E8E5DE;
+    --gray-400: #9B9791;
+    --gray-600: #5C5A55;
+    --gray-900: #1A1917;
+    --text: #1A1917;
+    --text-muted: #6B6860;
+    --radius: 4px;
+    --radius-lg: 8px;
+    --shadow-sm: 0 1px 3px rgba(13,31,60,0.08);
+    --shadow-md: 0 4px 16px rgba(13,31,60,0.10);
+    --shadow-lg: 0 8px 32px rgba(13,31,60,0.13);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    color: var(--text);
+    background: var(--white);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif;
+    line-height: 1.25;
+    color: var(--navy);
+  }
+
+  img { max-width: 100%; display: block; }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(13,31,60,0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .nav-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 0 2rem;
+    height: 68px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  .nav-logo {
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .nav-logo-mark {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    padding: 4px;
+  }
+
+  .nav-logo-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.01em;
+    line-height: 1.25;
+  }
+
+  .nav-logo-text .logo-sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: rgba(255,255,255,0.45);
+    text-transform: uppercase;
+  }
+
+  .nav-logo-text span { color: var(--gold); }
+
+  .nav-links {
+    display: flex; align-items: center; gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    transition: color .2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-erp {
+    color: var(--gold) !important;
+    border: 1px solid rgba(201,168,76,0.35);
+    padding: 5px 12px;
+    border-radius: var(--radius);
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.04em;
+    transition: background .2s, border-color .2s !important;
+  }
+
+  .nav-erp:hover {
+    background: rgba(201,168,76,0.12) !important;
+    border-color: var(--gold) !important;
+  }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--navy) !important;
+    font-weight: 600 !important;
+    padding: 8px 20px;
+    border-radius: var(--radius);
+    font-size: 14px !important;
+    transition: background .2s, transform .15s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+
+  .hamburger {
+    display: none;
+    flex-direction: column; gap: 5px; cursor: pointer;
+    background: none; border: none; padding: 4px;
+  }
+
+  .hamburger span {
+    display: block; width: 22px; height: 2px;
+    background: var(--white); border-radius: 2px;
+    transition: .3s;
+  }
+
+  /* ── HERO ── */
+  #inicio {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex; align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding-top: 68px;
+  }
+
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 80% at 10% 80%, rgba(30,61,110,0.6) 0%, transparent 60%);
+  }
+
+  .hero-lines {
+    position: absolute; inset: 0; overflow: hidden; opacity: 0.04;
+  }
+
+  .hero-lines::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -20%;
+    width: 200%; height: 200%;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 80px,
+      var(--gold) 80px,
+      var(--gold) 81px
+    );
+  }
+
+  .hero-inner {
+    max-width: 1200px; margin: 0 auto;
+    padding: 6rem 2rem;
+    position: relative; z-index: 1;
+    display: grid; grid-template-columns: 1fr 420px; gap: 4rem; align-items: center;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold-light);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-badge::before {
+    content: '';
+    display: block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold);
+  }
+
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.6rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.25rem;
+    line-height: 1.18;
+  }
+
+  .hero-title .accent { color: var(--gold); }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.65);
+    max-width: 520px;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    font-weight: 500;
+    font-size: 15px;
+    padding: 14px 28px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255,255,255,0.25);
+    cursor: pointer;
+    transition: border-color .2s, background .2s, transform .15s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    color: var(--gold);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+
+  .hero-stat-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    backdrop-filter: blur(4px);
+  }
+
+  .hero-stat-card .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+  }
+
+  .hero-stat-card .label {
+    font-size: 13px;
+    color: rgba(255,255,255,0.55);
+    margin-top: 2px;
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 90px 0; }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: .75rem;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  .section-label::before {
+    content: '';
+    display: block; width: 20px; height: 2px;
+    background: var(--gold);
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    color: var(--navy);
+    margin-bottom: 1rem;
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.75;
+  }
+
+  .section-head { margin-bottom: 3.5rem; }
+
+  /* ── DIFERENCIAIS STRIP ── */
+  #diferenciais-strip {
+    background: var(--navy);
+    padding: 48px 0;
+  }
+
+  .dif-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .dif-item {
+    padding: 2rem;
+    border-right: 1px solid rgba(255,255,255,0.07);
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+
+  .dif-item:last-child { border-right: none; }
+
+  .dif-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+
+  .dif-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+
+  .dif-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  /* ── SERVIÇOS ── */
+  #servicos { background: var(--cream); }
+
+  .servicos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+
+  .servico-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    transition: box-shadow .25s, transform .25s, border-color .25s;
+    cursor: default;
+  }
+
+  .servico-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-3px);
+    border-color: var(--gold);
+  }
+
+  .servico-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold);
+    margin-bottom: .75rem;
+  }
+
+  .servico-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px;
+    color: var(--navy);
+    margin-bottom: .5rem;
+  }
+
+  .servico-desc {
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.65;
+  }
+
+  /* ── SEGMENTOS ── */
+  #segmentos { background: var(--white); }
+
+  .segmentos-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+
+  .segmentos-list {
+    display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+  }
+
+  .seg-pill {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--navy);
+    display: flex; align-items: center; gap: 8px;
+    transition: background .2s, border-color .2s;
+  }
+
+  .seg-pill:hover {
+    background: var(--gold-pale);
+    border-color: rgba(201,168,76,0.4);
+  }
+
+  .seg-pill::before {
+    content: '';
+    display: block; width: 6px; height: 6px;
+    border-radius: 50%; background: var(--gold); flex-shrink: 0;
+  }
+
+  .regimes-box {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .regimes-box p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+  }
+
+  .regimes-box strong { color: var(--gold); }
+
+  /* ── SOBRE ── */
+  #sobre { background: var(--cream); }
+
+  .sobre-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;
+  }
+
+  .sobre-photo {
+    position: relative;
+  }
+
+  .sobre-photo-inner {
+    width: 100%;
+    aspect-ratio: 4/3;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    border-radius: var(--radius-lg);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .sobre-photo-inner::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 30px,
+      rgba(201,168,76,0.04) 30px,
+      rgba(201,168,76,0.04) 31px
+    );
+  }
+
+  .sobre-photo-placeholder {
+    font-size: 80px;
+    opacity: 0.15;
+    position: relative; z-index: 1;
+  }
+
+  .sobre-badge {
+    position: absolute;
+    bottom: -16px; right: -16px;
+    background: var(--gold);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow-md);
+    min-width: 140px;
+  }
+
+  .sobre-badge .num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .sobre-badge .txt {
+    font-size: 12px;
+    color: var(--navy-mid);
+    font-weight: 500;
+    margin-top: 2px;
+  }
+
+  .sobre-crc {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    padding: 8px 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .sobre-crc strong { color: var(--navy); }
+
+  .valores-list {
+    list-style: none;
+    display: flex; flex-direction: column; gap: .75rem;
+  }
+
+  .valores-list li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 15px;
+    color: var(--text-muted);
+  }
+
+  .valores-list li::before {
+    content: '';
+    display: block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold);
+    margin-top: 9px; flex-shrink: 0;
+  }
+
+  /* ── DEPOIMENTOS ── */
+  #depoimentos { background: var(--white); }
+
+  .depoimentos-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+  }
+
+  .dep-card {
+    background: var(--cream);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .dep-quote {
+    font-size: 40px;
+    line-height: 1;
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: .5rem;
+  }
+
+  .dep-text {
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .dep-author {
+    display: flex; align-items: center; gap: 10px;
+  }
+
+  .dep-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: var(--navy);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 600; color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    flex-shrink: 0;
+  }
+
+  .dep-name {
+    font-weight: 600; font-size: 14px; color: var(--navy);
+  }
+
+  .dep-role {
+    font-size: 12px; color: var(--text-muted);
+  }
+
+  /* ── FAQ ── */
+  #faq { background: var(--cream); }
+
+  .faq-layout {
+    display: grid; grid-template-columns: 1fr 2fr; gap: 5rem; align-items: start;
+  }
+
+  .faq-list {
+    display: flex; flex-direction: column; gap: .5rem;
+  }
+
+  .faq-item {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .faq-question {
+    width: 100%; text-align: left;
+    background: none; border: none; cursor: pointer;
+    padding: 1rem 1.25rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    font-size: 15px; font-weight: 500; color: var(--navy);
+    font-family: 'DM Sans', sans-serif;
+    transition: background .2s;
+  }
+
+  .faq-question:hover { background: var(--gray-100); }
+
+  .faq-question.active { background: var(--navy); color: var(--white); }
+
+  .faq-chevron {
+    width: 20px; height: 20px; flex-shrink: 0;
+    border: 1.5px solid currentColor;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .3s;
+    font-size: 11px;
+  }
+
+  .faq-question.active .faq-chevron { transform: rotate(180deg); }
+
+  .faq-answer {
+    display: none;
+    padding: 0 1.25rem 1rem;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .faq-answer.open { display: block; }
+
+  /* ── CONTATO ── */
+  #contato { background: var(--navy); }
+
+  .contato-layout {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+  }
+
+  .contato-info h2 { color: var(--white); margin-bottom: 1rem; }
+
+  .contato-info p {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px; line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .contato-channels {
+    display: flex; flex-direction: column; gap: 1rem;
+  }
+
+  .contato-ch {
+    display: flex; align-items: center; gap: 12px;
+    color: rgba(255,255,255,0.8);
+    font-size: 15px;
+  }
+
+  .ch-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: var(--radius);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+
+  .contato-form {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+
+  .form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex; flex-direction: column; gap: 6px;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    font-size: 15px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    outline: none;
+    transition: border-color .2s;
+    width: 100%;
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--gold); }
+
+  .form-group select option { background: var(--navy-mid); }
+
+  .form-group textarea { resize: vertical; min-height: 100px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 14px;
+    border: none; border-radius: var(--radius);
+    cursor: pointer;
+    font-family: 'DM Sans', sans-serif;
+    transition: background .2s, transform .15s;
+    letter-spacing: 0.01em;
+  }
+
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── WHATSAPP FLOAT ── */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 2rem; right: 2rem;
+    z-index: 999;
+    background: #25D366;
+    color: var(--white);
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: transform .2s, box-shadow .2s;
+    text-decoration: none;
+  }
+
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 28px rgba(37,211,102,0.55);
+  }
+
+  /* ── RODAPÉ ── */
+  footer {
+    background: #070E1C;
+    padding: 60px 0 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand p {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+    margin-top: .75rem;
+    max-width: 280px;
+  }
+
+  .footer-col h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-links {
+    list-style: none;
+    display: flex; flex-direction: column; gap: .5rem;
+  }
+
+  .footer-links a {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    transition: color .2s;
+  }
+
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding: 1.5rem 0;
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-bottom a { color: rgba(255,255,255,0.45); transition: color .2s; }
+  .footer-bottom a:hover { color: var(--gold); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: row; flex-wrap: wrap; }
+    .hero-stat-card { flex: 1; min-width: 160px; }
+    .dif-grid { grid-template-columns: repeat(2, 1fr); }
+    .dif-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .dif-item:nth-child(even) { border-bottom: none; }
+    .servicos-grid { grid-template-columns: repeat(2, 1fr); }
+    .depoimentos-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex; flex-direction: column;
+      position: fixed; top: 68px; left: 0; right: 0;
+      background: var(--navy);
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      gap: 1rem;
+    }
+    .hamburger { display: flex; }
+    .servicos-grid { grid-template-columns: 1fr; }
+    .segmentos-layout,
+    .sobre-layout,
+    .contato-layout,
+    .faq-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+    .depoimentos-grid { grid-template-columns: 1fr; }
+    .sobre-photo { display: none; }
+    section { padding: 60px 0; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .footer-bottom { flex-direction: column; gap: .75rem; text-align: center; }
+    .dif-grid { grid-template-columns: 1fr; }
+    .segmentos-list { grid-template-columns: 1fr; }
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge { animation: fadeUp .6s ease both; }
+  .hero-title  { animation: fadeUp .6s .1s ease both; }
+  .hero-subtitle { animation: fadeUp .6s .2s ease both; }
+  .hero-btns   { animation: fadeUp .6s .3s ease both; }
+  .hero-stats  { animation: fadeUp .6s .4s ease both; }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* Notification */
+  #notification {
+    position: fixed; bottom: 6rem; left: 50%; transform: translateX(-50%) translateY(20px);
+    background: var(--navy); color: var(--white);
+    padding: 12px 24px; border-radius: 30px;
+    font-size: 14px; font-weight: 500;
+    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(201,168,76,0.3);
+    opacity: 0; transition: opacity .3s, transform .3s;
+    pointer-events: none; z-index: 9999; white-space: nowrap;
+  }
+
+  #notification.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#inicio" class="nav-logo">
+      <div class="nav-logo-mark">
+        <svg viewBox="0 0 32 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="26" height="32">
+          <line x1="16" y1="2" x2="16" y2="38" stroke="#0D1F3C" stroke-width="2.2" stroke-linecap="round"/>
+          <path d="M10 8 C10 4, 22 4, 22 8 C22 12, 16 12, 16 12 C16 12, 22 12, 22 16 C22 20, 10 20, 10 16 C10 12, 16 12, 16 12" stroke="#0D1F3C" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M12 34 L16 30 L20 34" stroke="#0D1F3C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          <circle cx="12" cy="3.5" r="2" fill="#0D1F3C"/>
+          <circle cx="20" cy="3.5" r="2" fill="#0D1F3C"/>
+          <path d="M12 3.5 C12 1, 16 0, 16 2" stroke="#0D1F3C" stroke-width="1.2" fill="none"/>
+          <path d="M20 3.5 C20 1, 16 0, 16 2" stroke="#0D1F3C" stroke-width="1.2" fill="none"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">Escritório Comercial <span>Mercúrio</span><em class="logo-sub">Contabilidade Empresarial</em></span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#segmentos">Segmentos</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#depoimentos">Depoimentos</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="https://www.parceiroscatedra.com.br" target="_blank" rel="noopener" class="nav-erp">ERP <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style="display:inline-block;vertical-align:middle;margin-left:2px;"><path d="M2 8L8 2M8 2H4M8 2V6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+      <li><a href="#contato" class="nav-cta">Fale conosco</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-lines"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Contabilidade empresarial de confiança</div>
+      <h1 class="hero-title">
+        Segurança fiscal para o seu<br>
+        <span class="accent">negócio crescer</span>
+      </h1>
+      <p class="hero-subtitle">
+        Oferecemos suporte contábil, fiscal, trabalhista e financeiro completo para empresas de todos os portes — com atendimento consultivo e personalizado.
+      </p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5511999999999" class="btn-primary">
+          📲 Atendimento via WhatsApp
+        </a>
+        <a href="#servicos" class="btn-outline">
+          Conheça os serviços →
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat-card">
+        <div class="number">+15</div>
+        <div class="label">Anos de experiência</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="number">+300</div>
+        <div class="label">Empresas atendidas</div>
+      </div>
+      <div class="hero-stat-card">
+        <div class="number">100%</div>
+        <div class="label">Digital e online</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS STRIP -->
+<div id="diferenciais-strip">
+  <div class="container">
+    <div class="dif-grid">
+      <div class="dif-item reveal">
+        <div class="dif-icon">⚡</div>
+        <div>
+          <div class="dif-title">Agilidade nos processos</div>
+          <div class="dif-desc">Prazos cumpridos e obrigações entregues sem atraso.</div>
+        </div>
+      </div>
+      <div class="dif-item reveal">
+        <div class="dif-icon">🔒</div>
+        <div>
+          <div class="dif-title">Dados seguros</div>
+          <div class="dif-desc">Conformidade com a LGPD e total sigilo das informações.</div>
+        </div>
+      </div>
+      <div class="dif-item reveal">
+        <div class="dif-icon">📊</div>
+        <div>
+          <div class="dif-title">Relatórios gerenciais</div>
+          <div class="dif-desc">Visão clara da saúde financeira do seu negócio.</div>
+        </div>
+      </div>
+      <div class="dif-item reveal">
+        <div class="dif-icon">💬</div>
+        <div>
+          <div class="dif-title">Linguagem acessível</div>
+          <div class="dif-desc">Sem "contabilês" — explicamos tudo de forma simples.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="section-label">O que fazemos</div>
+      <h2 class="section-title">Serviços completos para sua empresa</h2>
+      <p class="section-desc">Cuidamos de toda a parte burocrática para que você possa focar no que realmente importa: o seu negócio.</p>
+    </div>
+    <div class="servicos-grid">
+      <div class="servico-card reveal">
+        <div class="servico-num">01</div>
+        <div class="servico-title">Abertura de Empresas</div>
+        <p class="servico-desc">Abrimos sua empresa com segurança jurídica, orientando sobre o melhor formato societário e regime tributário desde o início.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">02</div>
+        <div class="servico-title">Contabilidade Mensal</div>
+        <p class="servico-desc">Escrituração contábil completa, balancetes, DRE e balanço patrimonial entregues dentro do prazo, todo mês.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">03</div>
+        <div class="servico-title">Assessoria Fiscal e Tributária</div>
+        <p class="servico-desc">Apuração de impostos, envio de obrigações acessórias e monitoramento do calendário fiscal da sua empresa.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">04</div>
+        <div class="servico-title">Departamento Pessoal</div>
+        <p class="servico-desc">Admissões, demissões, férias, rescisões, eSocial, FGTS e toda a gestão trabalhista de forma precisa e ágil.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">05</div>
+        <div class="servico-title">Folha de Pagamento</div>
+        <p class="servico-desc">Processamento mensal da folha, holerites digitais e gestão de benefícios para toda a sua equipe.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">06</div>
+        <div class="servico-title">Planejamento Tributário</div>
+        <p class="servico-desc">Analisamos o perfil da sua empresa e identificamos estratégias legais para reduzir a carga tributária.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">07</div>
+        <div class="servico-title">Regularização de Empresas</div>
+        <p class="servico-desc">Resolvemos pendências fiscais, cadastrais e societárias para deixar sua empresa em dia com o Fisco.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">08</div>
+        <div class="servico-title">Alteração e Encerramento</div>
+        <p class="servico-desc">Alterações contratuais, mudança de endereço, inclusão de sócios e encerramento de empresas com total suporte.</p>
+      </div>
+      <div class="servico-card reveal">
+        <div class="servico-num">09</div>
+        <div class="servico-title">Consultoria Contábil</div>
+        <p class="servico-desc">Análises financeiras, orientação estratégica e suporte para tomada de decisões baseadas em dados reais.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SEGMENTOS -->
+<section id="segmentos">
+  <div class="container">
+    <div class="segmentos-layout">
+      <div class="reveal">
+        <div class="section-label">Para quem atendemos</div>
+        <h2 class="section-title">Expertise no seu segmento</h2>
+        <p class="section-desc" style="margin-bottom:2rem;">Conhecemos as particularidades tributárias e regulatórias de cada setor — o que faz toda a diferença no dia a dia.</p>
+        <div class="regimes-box">
+          <p>Atendemos empresas do <strong>Simples Nacional</strong>, <strong>Lucro Presumido</strong> e <strong>Lucro Real</strong>, com soluções adequadas para cada regime tributário e porte de negócio.</p>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="segmentos-list">
+          <div class="seg-pill">Comércio e varejo</div>
+          <div class="seg-pill">Prestadores de serviço</div>
+          <div class="seg-pill">Clínicas e saúde</div>
+          <div class="seg-pill">Empresas de tecnologia</div>
+          <div class="seg-pill">Indústrias</div>
+          <div class="seg-pill">Transportadoras</div>
+          <div class="seg-pill">Restaurantes e food</div>
+          <div class="seg-pill">Profissionais liberais</div>
+          <div class="seg-pill">Construção civil</div>
+          <div class="seg-pill">E-commerce</div>
+          <div class="seg-pill">Consultorias</div>
+          <div class="seg-pill">Pequenas e médias</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="container">
+    <div class="sobre-layout">
+      <div class="sobre-photo reveal">
+        <div class="sobre-photo-inner">
+          <div class="sobre-photo-placeholder">🏢</div>
+        </div>
+        <div class="sobre-badge">
+          <div class="num">+15</div>
+          <div class="txt">anos de mercado</div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="section-label">Quem somos</div>
+        <h2 class="section-title">Uma contabilidade comprometida com o seu crescimento</h2>
+        <div class="sobre-crc">
+          <span>🏅</span>
+          <span>Registrado no CRC: <strong>11121961</strong> &nbsp;·&nbsp; CNPJ: <strong>92.024.371/0001-21</strong></span>
+        </div>
+        <p style="color:var(--text-muted);font-size:16px;line-height:1.75;margin-bottom:1.25rem;">
+          Somos um escritório de contabilidade empresarial com anos de experiência no mercado, dedicado a oferecer suporte contábil, fiscal, trabalhista e financeiro para empresas de diferentes portes e segmentos.
+        </p>
+        <p style="color:var(--text-muted);font-size:16px;line-height:1.75;margin-bottom:2rem;">
+          Nossa missão é simplificar a burocracia para que você possa dedicar mais energia ao que realmente importa: fazer o seu negócio crescer com segurança e planejamento.
+        </p>
+        <ul class="valores-list">
+          <li>Atendimento próximo, consultivo e personalizado</li>
+          <li>Transparência total na comunicação</li>
+          <li>Tecnologia para processos mais ágeis e seguros</li>
+          <li>Comprometimento com prazos e resultados</li>
+          <li>Ética e sigilo profissional irrestutos</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-head reveal" style="text-align:center;max-width:600px;margin:0 auto 3.5rem;">
+      <div class="section-label" style="justify-content:center;">O que dizem nossos clientes</div>
+      <h2 class="section-title">Empresas que confiam em nós</h2>
+    </div>
+    <div class="depoimentos-grid">
+      <div class="dep-card reveal">
+        <div class="dep-quote">"</div>
+        <p class="dep-text">Desde que contratei o Escritório Mercúrio, nunca mais perdi um prazo fiscal. Eles cuidam de tudo com agilidade e me explicam cada detalhe de forma clara.</p>
+        <div class="dep-author">
+          <div class="dep-avatar">RM</div>
+          <div>
+            <div class="dep-name">Ricardo Mendes</div>
+            <div class="dep-role">Proprietário — Loja de Materiais de Construção</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card reveal">
+        <div class="dep-quote">"</div>
+        <p class="dep-text">O planejamento tributário que fizeram para minha clínica gerou uma economia real e legal nos impostos. Recomendo sem hesitação.</p>
+        <div class="dep-author">
+          <div class="dep-avatar">CA</div>
+          <div>
+            <div class="dep-name">Dra. Carla Alves</div>
+            <div class="dep-role">Médica — Clínica de Dermatologia</div>
+          </div>
+        </div>
+      </div>
+      <div class="dep-card reveal">
+        <div class="dep-quote">"</div>
+        <p class="dep-text">Abrimos nossa startup com total suporte deles. Em menos de uma semana tínhamos o CNPJ e já sabíamos exatamente qual regime tributário escolher.</p>
+        <div class="dep-author">
+          <div class="dep-avatar">FS</div>
+          <div>
+            <div class="dep-name">Felipe Santos</div>
+            <div class="dep-role">Co-fundador — Startup de Tecnologia</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="reveal">
+        <div class="section-label">Dúvidas</div>
+        <h2 class="section-title">Perguntas frequentes</h2>
+        <p style="color:var(--text-muted);font-size:15px;line-height:1.7;margin-top:1rem;">
+          Não encontrou o que procurava? Fale diretamente com um de nossos contadores.
+        </p>
+        <a href="#contato" class="btn-primary" style="margin-top:1.5rem;display:inline-flex;">
+          Falar com contador →
+        </a>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Quanto custa abrir uma empresa?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">O custo varia conforme o município, tipo jurídico e atividade da empresa. Inclui taxas da Junta Comercial, CNPJ, Alvará e registro na prefeitura. Entre em contato para uma estimativa precisa para o seu caso.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Vocês atendem empresas de outros estados?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">Sim! Atendemos empresas em todo o Brasil de forma 100% digital. Toda comunicação, envio de documentos e entrega de relatórios é feita por meios eletrônicos seguros.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Minha empresa pode pagar menos impostos?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">Em muitos casos, sim. Através do planejamento tributário legal, avaliamos qual o melhor regime (Simples, Presumido ou Real) e identificamos deduções aplicáveis à sua atividade, reduzindo a carga de forma lícita.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Como funciona a troca de contador?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">É simples. Solicitamos os arquivos contábeis ao contador anterior, fazemos a análise da situação da empresa e assumimos toda a gestão. O processo é transparente e sem interrupções nas obrigações fiscais.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Vocês cuidam da folha de pagamento?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">Sim. Gerenciamos todo o processo de folha de pagamento: holerites, férias, 13º salário, rescisões, envio ao eSocial, FGTS e INSS — tudo dentro do prazo legal.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Quais documentos preciso para contratar?
+            <span class="faq-chevron">▼</span>
+          </button>
+          <div class="faq-answer">Para empresas já abertas: contrato social, cartão CNPJ, últimas declarações entregues e acesso ao certificado digital. Para abertura: documentos pessoais dos sócios e informações sobre a atividade pretendida.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="container">
+    <div class="contato-layout">
+      <div class="contato-info reveal">
+        <div class="section-label" style="color:var(--gold-light);">Entre em contato</div>
+        <h2>Vamos conversar sobre o seu negócio</h2>
+        <p>Solicite uma proposta, tire dúvidas ou agende uma consultoria sem compromisso.</p>
+        <div class="contato-channels">
+          <div class="contato-ch">
+            <div class="ch-icon">📲</div>
+            <div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">WhatsApp</div>
+              <a href="https://wa.me/5511999999999" style="color:rgba(255,255,255,0.85);font-size:15px;">(11) 9 9999-9999</a>
+            </div>
+          </div>
+          <div class="contato-ch">
+            <div class="ch-icon">✉️</div>
+            <div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">E-mail</div>
+              <a href="mailto:contato@mercuriocontabil.com.br" style="color:rgba(255,255,255,0.85);font-size:15px;">contato@mercuriocontabil.com.br</a>
+            </div>
+          </div>
+          <div class="contato-ch">
+            <div class="ch-icon">📍</div>
+            <div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">Endereço</div>
+              <span style="font-size:15px;">Rua Exemplo, 1234 — São Paulo, SP</span>
+            </div>
+          </div>
+          <div class="contato-ch">
+            <div class="ch-icon">🕐</div>
+            <div>
+              <div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px;">Horário</div>
+              <span style="font-size:15px;">Seg–Sex: 8h às 18h</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="contato-form reveal">
+        <div style="font-family:'Playfair Display',serif;font-size:20px;color:var(--white);margin-bottom:1.75rem;">Solicite uma proposta</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Nome</label>
+            <input type="text" placeholder="Seu nome">
+          </div>
+          <div class="form-group">
+            <label>Empresa</label>
+            <input type="text" placeholder="Nome da empresa">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Telefone</label>
+            <input type="tel" placeholder="(00) 00000-0000">
+          </div>
+          <div class="form-group">
+            <label>E-mail</label>
+            <input type="email" placeholder="seu@email.com">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Serviço de interesse</label>
+          <select>
+            <option value="">Selecione um serviço...</option>
+            <option>Abertura de empresa</option>
+            <option>Contabilidade mensal</option>
+            <option>Planejamento tributário</option>
+            <option>Departamento pessoal</option>
+            <option>Regularização de empresa</option>
+            <option>Consultoria contábil</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensagem (opcional)</label>
+          <textarea placeholder="Conte um pouco sobre o seu negócio..."></textarea>
+        </div>
+        <button class="form-submit" onclick="submitForm()">Enviar solicitação</button>
+        <p style="font-size:12px;color:rgba(255,255,255,0.3);text-align:center;margin-top:1rem;">
+          Seus dados são protegidos conforme a LGPD. Não fazemos spam.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">
+          <div class="nav-logo-mark">
+            <svg viewBox="0 0 36 44" fill="none" xmlns="http://www.w3.org/2000/svg" width="30" height="36">
+              <line x1="18" y1="6" x2="18" y2="42" stroke="#0D1F3C" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M12 15 C8 11, 8 7, 12 6 C15 5, 18 7, 18 10" stroke="#0D1F3C" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 15 C28 11, 28 7, 24 6 C21 5, 18 7, 18 10" stroke="#0D1F3C" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 15 C8 19, 8 23, 12 24 C15 25, 18 23, 18 20" stroke="#0D1F3C" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M24 15 C28 19, 28 23, 24 24 C21 25, 18 23, 18 20" stroke="#0D1F3C" stroke-width="1.7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M18 6 C16 4, 13 2, 8 2 C10 3, 13 4.5, 15 6" stroke="#0D1F3C" stroke-width="1.3" fill="#0D1F3C" stroke-linecap="round"/>
+              <path d="M18 6 C20 4, 23 2, 28 2 C26 3, 23 4.5, 21 6" stroke="#0D1F3C" stroke-width="1.3" fill="#0D1F3C" stroke-linecap="round"/>
+              <path d="M13 38 L18 33 L23 38" stroke="#0D1F3C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <span class="nav-logo-text">Escritório Comercial <span>Mercúrio</span><em class="logo-sub">Contabilidade Empresarial</em></span>
+        </div>
+        <p>Contabilidade empresarial com foco em segurança fiscal, planejamento tributário e crescimento sustentável para o seu negócio.</p>
+        <div style="display:flex;gap:.75rem;margin-top:1.25rem;">
+          <a href="#" style="width:34px;height:34px;background:rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .2s;" onmouseover="this.style.background='rgba(201,168,76,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">in</a>
+          <a href="#" style="width:34px;height:34px;background:rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .2s;" onmouseover="this.style.background='rgba(201,168,76,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">ig</a>
+          <a href="#" style="width:34px;height:34px;background:rgba(255,255,255,0.06);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;transition:background .2s;" onmouseover="this.style.background='rgba(201,168,76,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.06)'">fb</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul class="footer-links">
+          <li><a href="#servicos">Abertura de empresas</a></li>
+          <li><a href="#servicos">Contabilidade mensal</a></li>
+          <li><a href="#servicos">Assessoria tributária</a></li>
+          <li><a href="#servicos">Departamento pessoal</a></li>
+          <li><a href="#servicos">Planejamento tributário</a></li>
+          <li><a href="#servicos">Consultoria contábil</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Empresa</h4>
+        <ul class="footer-links">
+          <li><a href="#sobre">Sobre nós</a></li>
+          <li><a href="#segmentos">Segmentos</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contato</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+5511999999999">(11) 9 9999-9999</a></li>
+          <li><a href="mailto:contato@mercuriocontabil.com.br">contato@mercuriocontabil.com.br</a></li>
+          <li style="color:rgba(255,255,255,0.3);font-size:14px;">Rua Exemplo, 1234<br>São Paulo – SP</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>
+        CNPJ: 92.024.371/0001-21 &nbsp;·&nbsp; CRC: 11121961 &nbsp;·&nbsp;
+        © 2025 Escritório Comercial Mercúrio. Todos os direitos reservados.
+      </div>
+      <div>
+        <a href="#privacidade">Política de Privacidade</a>
+        &nbsp;·&nbsp;
+        <a href="#termos">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5511999999999" class="whatsapp-float" title="Fale pelo WhatsApp" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24" fill="white" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<!-- Toast de notificação -->
+<div id="notification"></div>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('nav-links');
+  hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  document.querySelectorAll('#nav-links a').forEach(a => {
+    a.addEventListener('click', () => navLinks.classList.remove('open'));
+  });
+
+  // FAQ toggle
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    document.querySelectorAll('.faq-answer').forEach(a => a.classList.remove('open'));
+    document.querySelectorAll('.faq-question').forEach(q => q.classList.remove('active'));
+    if (!isOpen) {
+      answer.classList.add('open');
+      btn.classList.add('active');
+    }
+  }
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Form submit
+  function submitForm() {
+    const n = document.getElementById('notification');
+    n.textContent = '✅ Solicitação enviada! Em breve entraremos em contato.';
+    n.classList.add('show');
+    setTimeout(() => n.classList.remove('show'), 4000);
+  }
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 40) {
+      nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.3)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+</script>
+</body>
+</html>
