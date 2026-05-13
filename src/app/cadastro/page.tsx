@@ -20,7 +20,7 @@ export default async function CadastroPage() {
       <div className="w-full max-w-md bg-white p-8 rounded-xl shadow-lg border border-slate-100">
         <h1 className="text-2xl font-bold text-center text-slate-800 mb-2">Cadastre-se</h1>
         <p className="text-center text-slate-500 mb-6 text-sm">
-          Torne-se um Parceiro da Catedral e gerencie suas indicações.
+          Torne-se um Parceiro da Catedral e gerencie suas indicações
         </p>
 
         <CadastroForm funcoes={funcoes || []} defaultFuncaoId={defaultFuncaoId.toString()} />
